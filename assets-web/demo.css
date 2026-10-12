@@ -1,0 +1,20 @@
+/* Shared page style for every demo's .html file: a black page with the game
+ * canvas centered in it.  The build copies this to the root of book/, and
+ * each demo (which always lives one folder below the root) links to it as
+ * "../demo.css". */
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

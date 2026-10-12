@@ -1,0 +1,241 @@
+:root {
+    --content-max-width: 80%;
+}
+
+iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+code {
+    white-space: pre-wrap !important;
+}
+
+/* Without this, some browsers' print/PDF output chooses landscape on its
+   own (seemingly a heuristic based on content width -- iframes are
+   `width: 100%` above, and print.html's merged single-page layout has
+   nothing constraining how wide that ends up being). Force portrait
+   explicitly instead of relying on that guess, and cap iframe width so it
+   doesn't try to run edge-to-edge on the printed page in the first place. */
+@media print {
+    @page {
+        size: portrait;
+    }
+
+    iframe {
+        max-width: 6.5in;
+        margin: auto;
+    }
+}
+
+/* --- Playful admonish icons ---------------------------------------------
+   mdbook-admonish paints each type's icon by masking a solid color square
+   with an SVG shape (see mdbook-admonish.css). Simplest way to swap in an
+   emoji instead: turn that masking off and render the emoji as `content`
+   in the same box. Only the 4 types actually used in this book (note,
+   tip, info, warning) are covered -- restyle the others here if a chapter
+   ever reaches for one. Requires jetlag.css to load *after*
+   mdbook-admonish.css (see book.toml) so these rules win the cascade. */
+:is(.admonish-note) > :is(.admonition-title, summary.admonition-title)::before,
+:is(.admonish-tip, .admonish-hint, .admonish-important) > :is(.admonition-title, summary.admonition-title)::before,
+:is(.admonish-info, .admonish-todo) > :is(.admonition-title, summary.admonition-title)::before,
+:is(.admonish-warning, .admonish-caution, .admonish-attention) > :is(.admonition-title, summary.admonition-title)::before {
+    background: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+:is(.admonish-note) > :is(.admonition-title, summary.admonition-title)::before {
+    content: "📌";
+}
+
+:is(.admonish-tip, .admonish-hint, .admonish-important) > :is(.admonition-title, summary.admonition-title)::before {
+    content: "🎮";
+}
+
+:is(.admonish-info, .admonish-todo) > :is(.admonition-title, summary.admonition-title)::before {
+    content: "🏆";
+}
+
+:is(.admonish-warning, .admonish-caution, .admonish-attention) > :is(.admonition-title, summary.admonition-title)::before {
+    content: "⚡";
+}
+
+/* --- Arcade cabinet framing for live demos (see arcade-frame.js) ------ */
+
+.arcade-cabinet {
+    --arcade-neon-1: #ff2fd0;
+    --arcade-neon-2: #00e0ff;
+    --arcade-neon-3: #ffd400;
+    margin: 1.75em auto;
+    max-width: 100%;
+    padding: 0.4em 0.5em 0.6em;
+    border-radius: 18px;
+    background: linear-gradient(160deg, #2a1a3a 0%, #1a1030 55%, #10081f 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 0 22px rgba(255, 47, 208, 0.25),
+        0 10px 30px rgba(0, 0, 0, 0.45);
+    position: relative;
+}
+
+/* Corner "rivets" -- purely decorative, evokes a physical cabinet panel */
+.arcade-cabinet::before,
+.arcade-cabinet::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff8, #8886 60%, #0000 100%);
+    box-shadow: 0 62px 0 rgba(255, 255, 255, 0.15);
+}
+
+.arcade-cabinet::before {
+    left: 12px;
+}
+
+.arcade-cabinet::after {
+    right: 12px;
+}
+
+.arcade-marquee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 1.9em;
+    margin: 0 0.1em 0.5em;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        var(--arcade-neon-1),
+        var(--arcade-neon-2) 50%,
+        var(--arcade-neon-3)
+    );
+    box-shadow: 0 0 14px rgba(0, 224, 255, 0.35);
+}
+
+.arcade-marquee-label {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: #150a22;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.arcade-popout {
+    position: absolute;
+    top: 50%;
+    right: 0.4em;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: rgba(21, 10, 34, 0.18);
+    color: #150a22;
+    font-size: 0.95rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.arcade-popout:hover {
+    background: rgba(21, 10, 34, 0.35);
+}
+
+@media print {
+    /* A popout button that opens a new window is meaningless on paper. */
+    .arcade-popout {
+        display: none;
+    }
+}
+
+.arcade-screen {
+    padding: 0.5em;
+    border-radius: 10px;
+    background: #05030a;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.arcade-screen iframe {
+    display: block;
+    border: 0;
+    border-radius: 4px;
+}
+
+@media print {
+    /* Same reasoning as the plain `iframe` print rule above: don't let the
+       cabinet chrome (or its glow/shadow, which print engines render as
+       solid boxes) run edge-to-edge on the page. */
+    .arcade-cabinet {
+        max-width: 6.5in;
+        box-shadow: none;
+    }
+
+    .arcade-cabinet::before,
+    .arcade-cabinet::after {
+        display: none;
+    }
+}
+
+/* "Screenshot" terminal listings: ```bash-terminal (see terminal-code.js,
+   which aliases it to real bash highlighting) instead of plain ```bash.
+   mdbook's bundled highlight.css is a LIGHT theme (`.hljs` base text is
+   black on a near-white background) -- only the base text/background are
+   overridden here, so the existing syntax-highlighting token colors
+   (keywords, strings, comments, ...) still apply on top, same as any other
+   code block. */
+pre code.language-bash-terminal {
+    display: block;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border-radius: 6px;
+    padding: 2.5em 1em 1em;
+    position: relative;
+}
+
+pre code.language-bash-terminal::before {
+    content: "";
+    position: absolute;
+    top: 0.9em;
+    left: 1em;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow:
+        1.3em 0 0 0 #ffbd2e,
+        2.6em 0 0 0 #27c93f;
+}
+
+/* Fenced code blocks always start life as this generic shape (mdbook
+   itself only ever emits `<pre><code class="...">`), so the light theme's
+   own `<pre>`/copy-button chrome around it needs to go too, or the outer
+   box still looks like a normal (light) code block wrapped around a
+   black inner box. */
+pre:has(> code.language-bash-terminal) {
+    background: transparent;
+    border: 0;
+}
+
+pre:has(> code.language-bash-terminal) .buttons {
+    filter: invert(1);
+}

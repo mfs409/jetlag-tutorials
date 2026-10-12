@@ -3,6 +3,7 @@
     "module": "commonjs",
     "target": "esnext",
     "sourceMap": true,
+    "rootDir": "./tssrc",
     "outDir": "./check/",
     "noImplicitAny": true,
     "removeComments": true,
@@ -19,9 +20,10 @@
   },
   "exclude": [
     "node_modules",
-    "src/jetlag"
+    "tssrc/jetlag",
+    "tssrc/32/Capacitor.ts"
   ],
   "include": [
-    "src/*/*.ts",
+    "tssrc/**/*.ts"
   ]
 }

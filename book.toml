@@ -2,11 +2,11 @@
 authors = ["Michael Spear"]
 language = "en"
 multilingual = false
-src = "src"
-title = "Game Development with JetLag"
+src = "mdsrc"
+title = "The JetLag Book"
 [output.html]
-additional-css = ["./jetlag.css", "./mdbook-admonish.css"]
-additional-js = ["./mermaid.min.js", "./mermaid-init.js"]
+additional-css = ["./assets-web/mdbook-admonish.css", "./assets-web/jetlag.css"]
+additional-js = ["./assets-web/mermaid.min.js", "./assets-web/mermaid-init.js", "./assets-web/kofi.js", "./assets-web/arcade-frame.js", "./assets-web/terminal-code.js"]
 print.enable = false
 
 [preprocessor.katex]
@@ -18,3 +18,6 @@ command = "mdbook-mermaid"
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.0.2"
+
+[preprocessor.chapter-zero]
+levels = [0]
