@@ -1,0 +1,31 @@
+## Recorded with gifterm rec, then hand-edited:
+##   - `npm run gt -- rec run-code.gt --cols 60 --rows 12`
+##
+## Check it like this:
+##   - `npm run gt -- check run-code.gt
+##
+## Convert it to mp4 like this:
+##   - `npm run gt -- render run-code.gt -o run-code.mp4
+
+#cols 80
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C npm run serve -- my_game
+D 80
+N
+L
+L
+L > jetlag@1.0.0 serve
+L > node scripts/main.mjs serve my_game
+L
+R \e[1G\e[0K
+D 170
+R \e[32m\e[39m\r\n
+L \e[32mServing at http://localhost:7000/my_game/my_game.html\e[39m
+L   - The browser will auto-reload when code, assets, or an HTML file change
+L   - Press \e[31mctrl-c\e[39m to stop the server

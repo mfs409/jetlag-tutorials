@@ -1,0 +1,41 @@
+## Recorded with gifterm rec, then hand-edited:
+##   - `npm run gt -- rec create-project.gt --cols 60 --rows 12`
+##
+## Check it like this:
+##   - `npm run gt -- check create-project.gt
+##
+## Convert it to mp4 like this:
+##   - `npm run gt -- render create-project.gt -o create-project.mp4
+
+#cols 80
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C npm run create
+D 360
+N
+L
+L > jetlag@1.0.0 create
+L > node scripts/main.mjs create
+L
+R \e[1G\e[0K
+D 110
+R \e[1G
+R \e[0JName for the new project (letters, numbers, _, - only): \e[57G
+D 360
+C my_game
+D 360
+N
+L \e[32m  ✓ Created src/my_game/my_game.ts and src/my_game/my_game.html\e[39m
+L
+L Next steps:
+L   - Edit src/my_game/my_game.ts
+L   - Run \e[32mnpm run serve -- my_game\e[39m to see it
+R \e[1G\e[0K⠙
+R \e[1G
+R \e[0K
+R \e[?2004h~/Desktop/my-jetlag-tutorials $ 

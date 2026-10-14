@@ -1,0 +1,20 @@
+mkdir tmp
+cd tmp
+mkdir tmp/Desktop
+cd Desktop
+git clone git@github.com:mfs409/jetlag.git
+
+rm -rf jetlag
+cp -R ~/Desktop/gamedev/jetlag/jetlag-main/ my-jetlag-tutorials
+
+cd my-jetlag-tutorials
+rm -rf node_modules
+ls
+
+npm install
+
+npm run create
+my_game
+
+
+npm start

@@ -6,7 +6,7 @@ src = "mdsrc"
 title = "The JetLag Book"
 [output.html]
 additional-css = ["./assets-web/mdbook-admonish.css", "./assets-web/jetlag.css"]
-additional-js = ["./assets-web/mermaid.min.js", "./assets-web/mermaid-init.js", "./assets-web/kofi.js", "./assets-web/arcade-frame.js", "./assets-web/terminal-code.js"]
+additional-js = ["./assets-web/mermaid.min.js", "./assets-web/mermaid-init.js", "./assets-web/kofi.js", "./assets-web/arcade-frame.js", "./assets-web/terminal-code.js", "./assets-web/terminal-video.js"]
 print.enable = false
 
 [preprocessor.katex]

@@ -1,0 +1,48 @@
+## Recorded with gifterm rec, then hand-edited:
+##   - `npm run gt -- rec version-check.gt --cols 60 --rows 12`
+##
+## Check it like this:
+##   - `npm run gt -- check version-check.gt
+##
+## Convert it to mp4 like this:
+##   - `npm run gt -- render version-check.gt -o version-check.mp4
+
+#cols 80
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~ $ 
+D 80
+C node --version
+D 80
+N
+L v22.15.0
+
+D 500
+P ~ $ 
+D 80
+C npm --version
+D 80
+N
+L 11.3.0
+
+D 500
+P ~ $ 
+D 80
+C git --version
+D 80
+N
+L git version 2.43.0
+
+D 500
+P ~ $ 
+D 80
+C code --version
+D 80
+N
+L 1.140.0
+L 07f806f999227108933c2e30515b26eecc1fda74
+L x64
+

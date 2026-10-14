@@ -1,0 +1,28 @@
+## Recorded with gifterm rec, then hand-edited:
+##   - `npm run gt -- rec ls.gt --cols 60 --rows 12`
+##
+## Check it like this:
+##   - `npm run gt -- check ls.gt
+##
+## Convert it to mp4 like this:
+##   - `npm run gt -- render ls.gt -o ls.mp4
+
+#cols 80
+#rows 6
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop $ 
+D 80
+C cd my-jetlag-tutorials/
+D 80
+N
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C ls
+D 80
+N
+L AGENTS.md  LICENSE             package.json       README.md  \e[0m\e[01;34msrc\e[0m
+L CLAUDE.md  \e[01;34mmultiplayer-server\e[0m  package-lock.json  \e[01;34mscripts\e[0m    tsconfig.json
+P ~/Desktop/my-jetlag-tutorials $ 

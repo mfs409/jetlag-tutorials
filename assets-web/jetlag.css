@@ -239,3 +239,109 @@ pre:has(> code.language-bash-terminal) {
 pre:has(> code.language-bash-terminal) .buttons {
     filter: invert(1);
 }
+
+/* Terminal recordings: ```terminal-mp4 (see terminal-video.js, which swaps the
+   code block for this figure).  The window looks like the ```bash-terminal
+   one above: the same dark background, corners, and three dots.  The controls
+   sit inside the window, along the bottom. */
+figure.terminal-video {
+    position: relative;
+    margin: 1em 0;
+    padding: 2.5em 0 0;
+    background: #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+    color: #e0e0e0;
+}
+
+figure.terminal-video::before {
+    content: "";
+    position: absolute;
+    top: 0.9em;
+    left: 1em;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow:
+        1.3em 0 0 0 #ffbd2e,
+        2.6em 0 0 0 #27c93f;
+}
+
+figure.terminal-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+}
+
+figure.terminal-video .tv-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4em 0.7em;
+    background: #262626;
+}
+
+figure.terminal-video .tv-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+figure.terminal-video .tv-button:hover {
+    background: #3a3a3a;
+}
+
+figure.terminal-video .tv-button:focus-visible,
+figure.terminal-video .tv-slider:focus-visible {
+    outline: 2px solid #27c93f;
+    outline-offset: 1px;
+}
+
+figure.terminal-video .tv-button svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+figure.terminal-video .tv-slider {
+    flex: 1;
+    min-width: 3em;
+    accent-color: #27c93f;
+    cursor: pointer;
+}
+
+figure.terminal-video .tv-time {
+    min-width: 6.5em;
+    text-align: right;
+    font-family: "Source Code Pro", Consolas, monospace;
+    font-size: 0.8em;
+    font-variant-numeric: tabular-nums;
+    color: #b0b0b0;
+}
+
+/* The description is for people who can't see the recording, but it is
+   also a fine caption, so it is kept visible, quietly. */
+figure.terminal-video .tv-caption {
+    padding: 0.3em 0.9em 0.6em;
+    background: #262626;
+    font-size: 0.8em;
+    color: #9a9a9a;
+}
+
+figure.terminal-video.tv-failed .tv-controls {
+    display: none;
+}
+
+figure.terminal-video .tv-caption a {
+    color: #8ab4f8;
+}

@@ -1,0 +1,42 @@
+## Recorded with gifterm rec, then hand-edited:
+##   - `npm run gt -- rec git-config.gt --cols 60 --rows 12`
+##
+## Check it like this:
+##   - `npm run gt -- check git-config.gt
+##
+## Convert it to mp4 like this:
+##   - `npm run gt -- render git-config.gt -o git-config.mp4
+
+#cols 80
+#rows 5
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~ $ 
+D 80
+C git config --global init.defaultBranch main
+D 80
+N
+
+D 500
+P ~ $ 
+D 80
+C git config --global user.email "prof.parse@lehigh.edu"
+D 80
+N
+
+D 500
+P ~ $ 
+D 80
+C git config --global user.name "Prof. Parse"
+D 80
+N
+
+D 500
+P ~ $ 
+D 80
+C git config --global pull.rebase false
+D 80
+N
+
