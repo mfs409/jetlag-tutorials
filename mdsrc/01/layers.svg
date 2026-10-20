@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" font-family="Helvetica, Arial, sans-serif">
+  <!-- Outer container: the web browser page everything runs inside -->
+  <rect x="10" y="10" width="620" height="310" rx="28" fill="#5b9bd5" />
+
+  <!-- Top layer: JetLag itself -->
+  <rect x="40" y="34" width="560" height="90" rx="14" fill="#c7d6ef" />
+  <text x="320" y="70" font-size="24" font-weight="bold" fill="#274060" text-anchor="middle">Components, Entities, Services,</text>
+  <text x="320" y="100" font-size="24" font-weight="bold" fill="#274060" text-anchor="middle">Systems, Stage</text>
+
+  <!-- Middle layer: the two libraries JetLag stitches together -->
+  <rect x="40" y="144" width="268" height="76" rx="14" fill="#f0a868" />
+  <text x="174" y="190" font-size="26" font-weight="bold" fill="#fff" text-anchor="middle">Box2D</text>
+
+  <rect x="332" y="144" width="268" height="76" rx="14" fill="#a9d18e" />
+  <text x="466" y="190" font-size="26" font-weight="bold" fill="#fff" text-anchor="middle">Pixi.js</text>
+
+  <!-- Bottom layer: where it all actually runs -->
+  <rect x="40" y="240" width="560" height="60" rx="14" fill="#a6a6a6" />
+  <text x="320" y="278" font-size="24" font-weight="bold" fill="#fff" text-anchor="middle">Web Browser</text>
+</svg>

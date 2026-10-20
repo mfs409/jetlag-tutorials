@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 480.69492 251.054"
+   font-family="Helvetica, Arial, sans-serif"
+   version="1.1"
+   id="svg36"
+   sodipodi:docname="gravity_overhead.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   width="480.69492"
+   height="251.054"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview38"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.87830105"
+     inkscape:cx="296.59534"
+     inkscape:cy="180.46204"
+     inkscape:window-width="1920"
+     inkscape:window-height="1168"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg36" />
+  <text
+     x="269.35999"
+     y="17.784"
+     font-size="24px"
+     font-weight="bold"
+     fill="#333333"
+     text-anchor="middle"
+     id="text2">Overhead View: gravity = (0, 0)</text>
+  <!-- The floor, drawn as a tabletop viewed at an angle -->
+  <polygon
+     points="390,140 480,250 180,300 90,190 "
+     fill="#eef2f6"
+     stroke="#555555"
+     stroke-width="2"
+     id="polygon4"
+     transform="translate(-40.64,-102.216)" />
+  <!-- The game's own x/y axes: a flat gizmo anchored at the floor's top left
+       corner, matching JetLag's actual convention: (0,0) top left, x right,
+       y down, regardless of how the floor itself is drawn in perspective. -->
+  <circle
+     cx="-15.971691"
+     cy="99.463898"
+     r="4"
+     fill="#2d6cdf"
+     id="circle6"
+     inkscape:transform-center-x="0.40290922"
+     inkscape:transform-center-y="-0.29997856"
+     transform="rotate(-38.284438)" />
+  <text
+     x="-0.63999999"
+     y="79.783997"
+     font-size="16px"
+     fill="#2d6cdf"
+     font-weight="bold"
+     id="text8">(0,0)</text>
+  <line
+     x1="49.327812"
+     y1="87.78067"
+     x2="128.25978"
+     y2="74.751953"
+     stroke="#2d6cdf"
+     stroke-width="3"
+     marker-end="url(#arrowBlue)"
+     id="line10"
+     inkscape:transform-center-x="-39.470142"
+     inkscape:transform-center-y="-6.712347" />
+  <text
+     x="120.37327"
+     y="101.64228"
+     font-size="20px"
+     fill="#2d6cdf"
+     font-weight="bold"
+     id="text12"
+     inkscape:transform-center-x="-90.553024"
+     inkscape:transform-center-y="-13.522582"
+     transform="rotate(-9.3728854)">x</text>
+  <line
+     x1="49.087494"
+     y1="87.969116"
+     x2="98.652763"
+     y2="150.76469"
+     stroke="#2d6cdf"
+     stroke-width="3"
+     marker-end="url(#arrowBlue)"
+     id="line14"
+     inkscape:transform-center-x="-24.37972"
+     inkscape:transform-center-y="31.097808" />
+  <text
+     x="-7.9716902"
+     y="194.46394"
+     font-size="20px"
+     fill="#2d6cdf"
+     font-weight="bold"
+     id="text16"
+     inkscape:transform-center-x="-67.040246"
+     inkscape:transform-center-y="63.404541"
+     transform="rotate(-38.284438)">y</text>
+  <!-- The actor, standing on the floor -->
+  <circle
+     cx="229.36"
+     cy="117.784"
+     r="16"
+     fill="#c0392b"
+     id="circle18" />
+  <!-- Real gravity: straight down, perpendicular to the floor, off the screen's own axes -->
+  <line
+     x1="229.36"
+     y1="117.784"
+     x2="229.36"
+     y2="222.784"
+     stroke="#222222"
+     stroke-width="4"
+     marker-end="url(#arrowBlack)"
+     id="line20"
+     inkscape:transform-center-x="-0.20815057"
+     inkscape:transform-center-y="53.183258" />
+  <text
+     x="251.36"
+     y="207.784"
+     font-size="20px"
+     font-weight="bold"
+     fill="#222222"
+     id="text22">gravity</text>
+  <text
+     x="251.36"
+     y="230.784"
+     font-size="15px"
+     fill="#555555"
+     id="text24">(the &quot;z&quot; axis: perpendicular to the</text>
+  <text
+     x="251.36"
+     y="247.784"
+     font-size="15px"
+     fill="#555555"
+     id="text26">screen, so the game never sees it)</text>
+  <defs
+     id="defs34">
+    <marker
+       id="arrowBlue"
+       markerWidth="10"
+       markerHeight="10"
+       refX="6"
+       refY="3"
+       orient="auto">
+      <path
+         d="M 0,0 6,3 0,6 Z"
+         fill="#2d6cdf"
+         id="path28" />
+    </marker>
+    <marker
+       id="arrowBlack"
+       markerWidth="10"
+       markerHeight="10"
+       refX="6"
+       refY="3"
+       orient="auto">
+      <path
+         d="M 0,0 6,3 0,6 Z"
+         fill="#222222"
+         id="path31" />
+    </marker>
+  </defs>
+</svg>

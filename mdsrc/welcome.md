@@ -32,7 +32,7 @@ This book is designed to be read in a browser on a laptop or desktop computer, b
 Here's the game you'll build in Chapter 1.
 Use the arrow keys to catch ten fireflies, then get to the jar before the sun comes up:
 
-<iframe src="./01/mbe_firefly_jar_game.html"></iframe>
+<iframe src="./01/firefly_jar_game.html"></iframe>
 
 It's a complete game, with a goal, a clock, and a way to win or lose, and it's built from the same handful of pieces that every game in this book starts from.
 By the end of Chapter 1, you'll have built it yourself.

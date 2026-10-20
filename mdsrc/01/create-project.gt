@@ -1,0 +1,32 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#cols 80
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C npm run create
+D 360
+N
+L
+L > jetlag@1.0.0 create
+L > node scripts/main.mjs create
+L
+R \e[1G\e[0K
+D 120
+R \e[1G\e[0JName for the new project (letters, numbers, _, - only): \e[57G
+D 360
+C unit_01
+D 360
+N
+D 80
+L \e[32m  ✓ Created src/unit_01/unit_01.ts and src/unit_01/unit_01.html\e[39m
+L
+L Next steps:
+L   - Edit src/unit_01/unit_01.ts
+L   - Run \e[32mnpm run serve -- unit_01\e[39m to see it
+R \e[1G\e[0K⠙
+R \e[1G
+R \e[0K

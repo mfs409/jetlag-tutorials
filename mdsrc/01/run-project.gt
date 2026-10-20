@@ -1,0 +1,22 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#cols 80
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/tools/gifterm $ 
+D 80
+C npm run serve -- unit_01
+N
+D 80
+L
+L > jetlag@1.0.0 serve
+L > node scripts/main.mjs serve unit_01
+L
+R \e[1G\e[0K
+D 210
+R \e[32m\e[39m\r\n
+L \e[32mServing at http://localhost:7000/unit_01/unit_01.html\e[39m
+L   - The browser will auto-reload when code, assets, or an HTML file change
+L   - Press \e[31mctrl-c\e[39m to stop the server
