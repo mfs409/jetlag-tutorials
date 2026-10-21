@@ -429,6 +429,30 @@ else {
 }
 ```
 
+Sometimes you only want an `if` and an `else` to choose between two *values*.
+For that, TypeScript has a shorter form, with a `?` and a `:`:
+
+```typescript
+let message = lives > 0 ? "Keep going!" : "Game over";
+```
+
+The form is `condition ? value1 : value2`, which means "if the condition is true, the answer is `value1`, and otherwise it's `value2`".
+The code above does the same thing as this longer version:
+
+```typescript
+let message = "";
+if (lives > 0) {
+  message = "Keep going!";
+}
+else {
+  message = "Game over";
+}
+```
+
+This is called the "ternary operator", because it has three parts.
+It's handy when you want to pick a value in the middle of other code, like when you're writing the text that goes on the screen.
+If you find it hard to read, it's always possible to write the code differently, so it can use `if` and `else` instead.
+
 `if` lets us do something zero or one times.
 What if we want to do it a lot of times?
 We use the term "loop" or "iteration" for this purpose.
