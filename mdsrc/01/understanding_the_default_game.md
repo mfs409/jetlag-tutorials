@@ -181,10 +181,12 @@ Appearance and body don't have to match, but here they do.
 `cx`/`cy` are the center point of the actor.
 Remember that (0, 0) is the world's top-left corner, with X increasing rightward and Y increasing downward.
 
-The hero has a `DynamicBodyMovement` object to control its movement.
-This is the default for things that you'll want to control.
-It doesn't actually establish any rules for making the actor move.
-Instead, it (1) ensures the actor isn't hard-coded as stationary, (2) ensures that every collision between this actor and other actors will be detected, and (3) makes the actor experience gravity.
+The hero's body has a second argument, `{ dynamic: true }`.
+A body is *static* unless you say otherwise, which means that it never moves.
+That's appropriate for the obstacles and the walls, but not for something you want to control.
+`dynamic: true` says that this body can move, and that it should be pushed around by gravity and by whatever it runs into.
+It doesn't establish any rules for making the hero move.
+It just makes sure that the hero isn't hard-coded as stationary.
 
 The hero's `behaviors` field holds a `PlayerControlBehavior`.
 On its own, that doesn't make the hero move (the keyboard handlers below do that).

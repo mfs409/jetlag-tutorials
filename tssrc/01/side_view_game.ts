@@ -1,4 +1,4 @@
-import { Actor, BoxBody, CircleBody, DebugToggle, DynamicBodyMovement, FilledBox, FilledCircle, GoalBehavior, GridSystem, JetLagGameConfig, KeyCodes, PlayerControlBehavior, ScoreService, SolidBehavior, TextSprite, initializeAndLaunch, stage } from "../jetlag";
+import { Actor, BoxBody, CircleBody, DebugToggle, FilledBox, FilledCircle, GoalBehavior, GridSystem, JetLagGameConfig, KeyCodes, PlayerControlBehavior, ScoreService, SolidBehavior, TextSprite, initializeAndLaunch, stage } from "../jetlag";
 
 /** This game loads a font, so that it can display text */
 class Config implements JetLagGameConfig {
@@ -52,9 +52,8 @@ function builder() {
   // add gravity, below) is what makes it look like a jump.
   let h = new Actor({
     appearance: new FilledCircle({ radius: 0.75, fillColor: "#0000ff", lineWidth: 0.03, lineColor: "#000044" }),
-    rigidBody: new CircleBody({ cx: 3, cy: 3, radius: 0.75 }),
+    rigidBody: new CircleBody({ cx: 3, cy: 3, radius: 0.75 }, { dynamic: true }),
     behaviors: new PlayerControlBehavior(),
-    movement: new DynamicBodyMovement(),
     gestures: { onTap: () => { h.rigidBody.yVelocity = -8; return true; } },
   });
 

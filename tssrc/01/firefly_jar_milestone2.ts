@@ -1,4 +1,4 @@
-import { Actor, BoxBody, CircleBody, CollectableBehavior, DebugToggle, DynamicBodyMovement, FilledBox, FilledCircle, GoalBehavior, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, Scene, ScoreService, SolidBehavior, stage, TextSprite, TimedEvent } from "../jetlag";
+import { Actor, BoxBody, CircleBody, CollectableBehavior, DebugToggle, FilledBox, FilledCircle, GoalBehavior, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, Scene, ScoreService, SolidBehavior, stage, TextSprite, TimedEvent } from "../jetlag";
 import { endScreen } from "../common/common";
 
 /** Screen dimensions and other game configuration */
@@ -104,8 +104,7 @@ function builder() {
       new FilledBox({ width: 0.7, height: 0.7, fillColor: "#9ca3af", lineWidth: 0.04, lineColor: "#d1d5db" }),
       new TextSprite({ center: true, face: "Arimo Regular", size: 14, color: "#111827" }, "you"),
     ],
-    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }),
-    movement: new DynamicBodyMovement(),
+    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }, { dynamic: true }),
     behaviors: new PlayerControlBehavior(),
   });
   const speed = 5;

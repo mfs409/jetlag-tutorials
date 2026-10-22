@@ -1,4 +1,4 @@
-import { Actor, BoxBody, CircleBody, CollectableBehavior, DebugToggle, DynamicBodyMovement, FilledBox, FilledCircle, FilledRoundedBox, GoalBehavior, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, Scene, ScoreService, SolidBehavior, stage, TextSprite, TimedEvent } from "../jetlag";
+import { Actor, BoxBody, CircleBody, CollectableBehavior, DebugToggle, FilledBox, FilledCircle, FilledRoundedBox, GoalBehavior, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, Scene, ScoreService, SolidBehavior, stage, TextSprite, TimedEvent } from "../jetlag";
 import { endScreen } from "../common/common";
 
 /** Screen dimensions and other game configuration */
@@ -105,8 +105,7 @@ function builder() {
   // The main character, who moves via the arrow keys
   const hero = new Actor({
     appearance: new FilledCircle({ radius: 0.35, fillColor: "#e9dcc0", lineWidth: 0.05, lineColor: "#8a7a5c" }),
-    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }),
-    movement: new DynamicBodyMovement(),
+    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }, { dynamic: true }),
     behaviors: new PlayerControlBehavior(),
   });
   // ANCHOR_END: hero_art

@@ -103,7 +103,7 @@ It makes the hero take part in collisions.
 Other parts of the engine check "does this actor have a `PlayerControlBehavior`?" to decide things like "is this actor allowed to collect that firefly?" or "should reaching the jar end the game?"
 You'll see this pattern again and again: a behavior that mostly exists so that *other* behaviors can check for it.
 
-The hero also has `movement: new DynamicBodyMovement()`.
+The hero's body also has `{ dynamic: true }`.
 It tells JetLag that this body moves and reacts to collisions.
 
 ## Moving the Hero With the Keyboard

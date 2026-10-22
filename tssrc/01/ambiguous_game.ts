@@ -1,4 +1,4 @@
-import { Actor, CircleBody, DebugToggle, DynamicBodyMovement, FilledCircle, FilledPolygon, GridSystem, HazardBehavior, JetLagGameConfig, KeyCodes, Path, PathMovement, PolygonBody, ProjectileMovement, ThrowableBehavior, TimedEvent, initializeAndLaunch, stage } from "../jetlag";
+import { Actor, CircleBody, DebugToggle, FilledCircle, FilledPolygon, GridSystem, HazardBehavior, JetLagGameConfig, KeyCodes, Path, PathMovement, PolygonBody, ProjectileMovement, ThrowableBehavior, TimedEvent, initializeAndLaunch, stage } from "../jetlag";
 import { heroBehaviors } from "../common/common";
 
 /** The game will use a 16:9 aspect ratio.  Hit boxes are turned on. */
@@ -39,9 +39,8 @@ function builder() {
   // work.
   let h = new Actor({
     appearance: new FilledPolygon({ vertices: [{ x: 0, y: -0.5 }, { x: 0.25, y: 0.5 }, { x: -0.25, y: 0.5 },], fillColor: "#0000ff", lineWidth: 0.03, lineColor: "#000044", z: 1 }),
-    rigidBody: new PolygonBody({ cx: 8, cy: 4.5, vertices: [{ x: 0, y: -0.5 }, { x: 0.25, y: 0.5 }, { x: -0.25, y: 0.5 },] }, { collisionsEnabled: false }),
+    rigidBody: new PolygonBody({ cx: 8, cy: 4.5, vertices: [{ x: 0, y: -0.5 }, { x: 0.25, y: 0.5 }, { x: -0.25, y: 0.5 },] }, { dynamic: true, collisionsEnabled: false }),
     behaviors: heroBehaviors(),
-    movement: new DynamicBodyMovement(),
   });
 
   // The left and right keys rotate the hero.  Make sure you understand whether

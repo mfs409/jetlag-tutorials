@@ -1,4 +1,4 @@
-import { Actor, BoxBody, CircleBody, DebugToggle, DynamicBodyMovement, FilledBox, FilledCircle, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, SolidBehavior, stage, TextSprite } from "../jetlag";
+import { Actor, BoxBody, CircleBody, DebugToggle, FilledBox, FilledCircle, initializeAndLaunch, JetLagGameConfig, KeyCodes, PlayerControlBehavior, SolidBehavior, stage, TextSprite } from "../jetlag";
 
 /** Screen dimensions and other game configuration */
 class Config implements JetLagGameConfig {
@@ -83,8 +83,7 @@ function builder() {
       new FilledBox({ width: 0.7, height: 0.7, fillColor: "#9ca3af", lineWidth: 0.04, lineColor: "#d1d5db" }),
       new TextSprite({ center: true, face: "Arimo Regular", size: 14, color: "#111827" }, "you"),
     ],
-    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }),
-    movement: new DynamicBodyMovement(),
+    rigidBody: new CircleBody({ cx: 1.2, cy: 4.5, radius: 0.35 }, { dynamic: true }),
     behaviors: new PlayerControlBehavior(),
   });
   // ANCHOR_END: hero
