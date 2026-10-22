@@ -206,8 +206,8 @@ export function drawMuteButton(cfg: { cx: number, cy: number, width: number, hei
       // volume is either 1 or 0, switch it to the other and save it
       let volume = 1 - VOLUME.get();
       VOLUME.set(volume);
-      // update all music
-      stage.musicLibrary.resetMusicVolume(volume);
+      // mute or unmute all audio
+      stage.musicLibrary.muted = volume == 0;
 
       if (getVolume()) {
         getAppearance(mute, ImageSprite).img = "audio_on.png";
