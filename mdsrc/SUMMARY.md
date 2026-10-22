@@ -34,6 +34,17 @@
         - [Wrap-Up](./01/applying_the_mental_model_firefly_jar_wrap_up.md)
     - [Coding With an AI Assistant](./01/coding_with_an_ai_assistant.md)
     - [Wrapping Up](./01/wrapping_up.md)
+- [Chapter 2: Rigid Body Physics & Motion Properties](./02/rigid_body_physics_motion_properties.md)
+    - [The Starter Code](./02/the_starter_code.md)
+    - [Hole 1: Dogleg (Static Bodies and Shapes)](./02/hole_1_dogleg_static_bodies_and_shapes.md)
+    - [Hole 2: The Windmill (Kinematic Bodies)](./02/hole_2_the_windmill_kinematic_bodies.md)
+    - [Hole 3: Crate Alley (Dynamic Bodies and Density)](./02/hole_3_crate_alley_dynamic_bodies_and_density.md)
+    - [Hole 4: Rubber Room (Elasticity)](./02/hole_4_rubber_room_elasticity.md)
+    - [Hole 5: Ice Rink (Damping)](./02/hole_5_ice_rink_damping.md)
+    - [Hole 6: Mushroom Garden (Resizing)](./02/hole_6_mushroom_garden_resizing.md)
+    - [Hole 7: Downhill (Gravity and Friction)](./02/hole_7_downhill_gravity_and_friction.md)
+    - [Hole 8: Rafts (Floating Bodies)](./02/hole_8_rafts_floating_bodies.md)
+    - [Wrapping Up](./02/wrapping_up.md)
 
 ---
 
