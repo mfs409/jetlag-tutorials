@@ -1,0 +1,21 @@
+{
+  "name": "pirates-ledger-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Node.js server for the JetLag 'Server-Backed Persistence' chapter: Google OAuth login (or a pretend one) and a SQLite leaderboard for Crate Cove.",
+  "scripts": {
+    "build": "esbuild --bundle ../ledger_game.ts --outfile=../ledger_game.js --platform=browser --target=es2020",
+    "prestart": "npm run build",
+    "start": "node --env-file-if-exists=.env server.js"
+  },
+  "engines": {
+    "node": ">=22.9.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

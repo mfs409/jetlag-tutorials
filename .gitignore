@@ -2,7 +2,5 @@ node_modules/
 .vscode/
 check/
 tut-dist/
-tssrc/jetlag
-tssrc/jetlag.ts
 book/
-tssrc/22/pl_ledger_game.js
+src/22/games/pl_ledger_game.js

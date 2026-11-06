@@ -345,3 +345,9 @@ figure.terminal-video.tv-failed .tv-controls {
 figure.terminal-video .tv-caption a {
     color: #8ab4f8;
 }
+
+/* Professor Parse floats at the left of the text, and the text shouldn't crowd him.  The pages
+   say `margin: -36px 1em 1em 0` inline, so this has to say `!important` to win. */
+img[alt="Professor Parse"] {
+    margin-right: 1.75em !important;
+}

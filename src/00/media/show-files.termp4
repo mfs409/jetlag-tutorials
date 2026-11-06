@@ -1,0 +1,24 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#font /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+#font-bold /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+#font-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf
+#font-bold-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf
+
+#cols 104
+#rows 5
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop $ 
+D 80
+C cd my-jetlag-tutorials/
+D 80
+N
+P ~/Desktop/my-jetlag-tutorials $
+D 80
+C ls
+D 80
+N
+L AGENTS.md  CLAUDE.md  package.json  README.md  tsconfig.json
+P ~/Desktop/my-jetlag-tutorials $ 

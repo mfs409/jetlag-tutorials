@@ -1,0 +1,79 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#font /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+#font-bold /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+#font-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf
+#font-bold-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf
+
+#cols 104
+#rows 10
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C npm install
+D 80
+N
+R \e[?2004l
+D 250
+R \r\e[1G\e[0K⠙
+D 80
+R \e[1G\e[0K⠹
+D 100
+R \e[1G
+R \e[0K⠸
+D 80
+R \e[1G\e[0K⠼
+D 100
+R \e[1G\e[0K⠴
+D 80
+R \e[1G\e[0K⠦
+D 80
+R \e[1G\e[0K⠧
+D 80
+R \e[1G\e[0K⠇
+D 80
+R \e[1G
+R \e[0K⠏
+D 90
+R \e[1G\e[0K⠋
+D 80
+R \e[1G\e[0K⠙
+D 80
+R \e[1G\e[0K⠹
+D 80
+R \e[1G\e[0K⠸
+D 80
+R \e[1G\e[0K⠼
+D 80
+R \e[1G\e[0K⠴
+D 80
+R \e[1G\e[0K⠦
+D 230
+R \e[1G\e[0K⠧
+D 200
+R \e[1G\e[0K⠇
+D 80
+R \e[1G\e[0K⠏
+D 80
+R \e[1G\e[0K⠋
+D 80
+R \e[1G\e[0K⠙
+D 80
+R \e[1G\e[0K⠹
+D 80
+R \e[1G\e[0K⠸
+D 80
+R \e[1G\e[0K\r\n
+L added 79 packages, and audited 80 packages in 2s
+R \e[1G\e[0K⠸
+R \e[1G\e[0K\r\n
+R \e[1G\e[0K⠸\e[1G\e[0K2 packages are looking for funding\r\n
+R \e[1G\e[0K⠸\e[1G\e[0K  run `npm fund` for details\r\n
+R \e[1G\e[0K⠸
+R \e[1G\e[0K\r\n
+L found \e[32m\e[1m0\e[22m\e[39m vulnerabilities
+R \e[1G\e[0K⠸
+R \e[1G\e[0K
+R \e[?2004h~/Desktop/my-jetlag-tutorials $ 

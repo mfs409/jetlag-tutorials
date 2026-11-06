@@ -1,0 +1,164 @@
+import { Actor, BoxBody, CircleBody, CollectableBehavior, DebugToggle, FilledCircle, FilledPolygon, GoalBehavior, HazardBehavior, initializeAndLaunch, JetLagGameConfig, KeyCodes, Path, PathMovement, Scene, SessionValue, stage, TextSprite } from "jetlag2d";
+import { boundingBox, endScreen, heroBehaviors } from "../common/common";
+
+/** Screen dimensions and other game configuration */
+class Config implements JetLagGameConfig {
+  aspectRatio = { width: 16, height: 9 };
+  hitBoxes = true;
+  resources = {
+    fonts: ["Arimo-Regular.ttf", "Roboto-Black.ttf"],
+  };
+}
+
+/**
+ * STARTER CODE for Bunny Burrow.
+ *
+ * Three levels of a bunny collecting carrots, and running from foxes.  It's
+ * a complete little game, but it has no title, and no story.  The comments
+ * below say what each stage adds.
+ *
+ * TODO (The first click): a title screen, whose button is the tap that browsers need before they will play video, and a cut scene that plays when the game begins.
+ *
+ * TODO (Controls): buttons, and a key, to skip the cut scene, pause it, and watch it again.
+ *
+ * TODO (A cut scene in an overlay): a cut scene that plays over the win screen of some levels.
+ *
+ * TODO (The story): a way to watch the story again from the title, and a game that ends back at the title.
+ */
+
+/** One level of the game */
+interface Level {
+  /** What it's called */
+  name: string;
+  /** Where the carrots are */
+  carrots: { x: number; y: number }[];
+  /** The foxes, each of which walks back and forth along a path */
+  foxes: [number, number][][];
+  /** Is there a cut scene after this level? */
+  clip: boolean;
+}
+
+/** The levels, from the easiest to the hardest */
+const LEVELS: Level[] = [
+  { name: "The Meadow", carrots: [{ x: 4, y: 6.5 }, { x: 7, y: 2.5 }, { x: 10, y: 6 }, { x: 12.5, y: 3.5 }], foxes: [[[8, 1.5], [8, 7.5]]], clip: false },
+  { name: "The Hollow Log", carrots: [{ x: 3, y: 2 }, { x: 5, y: 7 }, { x: 8, y: 4.5 }, { x: 11, y: 7 }, { x: 13, y: 2.5 }, { x: 14.5, y: 6 }], foxes: [[[6.5, 1.5], [6.5, 7.5]], [[11.5, 7.5], [11.5, 1.5]]], clip: true },
+  { name: "The Fox's Den", carrots: [{ x: 2.5, y: 3 }, { x: 4, y: 7 }, { x: 6, y: 4 }, { x: 8, y: 7.5 }, { x: 9.5, y: 2 }, { x: 12, y: 5 }, { x: 13.5, y: 7.5 }, { x: 14, y: 3 }], foxes: [[[5, 1.5], [5, 7.5]], [[8, 7.5], [8, 1.5]], [[11, 1.5], [11, 7.5]]], clip: true },
+];
+
+/** The screens of the game */
+type Screen = "title" | "intro" | "play";
+
+/** Which screen is showing, and which level it is (if it's the playing screen) */
+class Showing {
+  /**
+   * @param screen Which screen
+   * @param level  Which level
+   */
+  constructor(public screen: Screen = "title", public level = 0) { }
+}
+
+/** What is showing, in session storage.  Before anything has been shown, it's the title screen. */
+const SHOWING = new SessionValue<Showing>("showing", () => new Showing());
+
+/**
+ * Go to another screen
+ *
+ * @param screen Which one
+ * @param level  Which level to play, if it's the playing screen
+ */
+function show(screen: Screen, level = 0) {
+  SHOWING.set(new Showing(screen, level));
+  stage.switchTo(builder);
+}
+
+/**
+ * A bunny, drawn from shapes
+ *
+ * @param fur The HTML hex color of the fur
+ */
+const bunnyLook = (fur: string) => [
+  new FilledPolygon({ vertices: [{ x: -0.12, y: 0 }, { x: -0.05, y: -0.55 }, { x: 0.02, y: 0 }], fillColor: fur, lineWidth: 0.03, lineColor: "#8a7a7a", offset: { dx: -0.1, dy: -0.35 }, z: 1 }),
+  new FilledPolygon({ vertices: [{ x: -0.02, y: 0 }, { x: 0.05, y: -0.55 }, { x: 0.12, y: 0 }], fillColor: fur, lineWidth: 0.03, lineColor: "#8a7a7a", offset: { dx: 0.14, dy: -0.35 }, z: 1 }),
+  new FilledCircle({ radius: 0.34, fillColor: fur, lineWidth: 0.04, lineColor: "#8a7a7a", z: 1 }),
+  new FilledCircle({ radius: 0.05, fillColor: "#222222", offset: { dx: -0.1, dy: -0.05 }, z: 2 }),
+  new FilledCircle({ radius: 0.05, fillColor: "#222222", offset: { dx: 0.14, dy: -0.05 }, z: 2 }),
+  new FilledCircle({ radius: 0.07, fillColor: "#ff9ab0", offset: { dx: 0.02, dy: 0.08 }, z: 2 }),
+];
+
+/** Build whichever screen is showing */
+function builder() {
+  DebugToggle.enable();
+  const levelNum = SHOWING.get().level;
+  const level = LEVELS[levelNum];
+
+  // --- The meadow --------------------------------------------------------------------------
+  stage.backgroundColor = "#bfe3a0";
+  boundingBox();
+  const bunny = new Actor({
+    appearance: bunnyLook("#f4f0ea"),
+    rigidBody: new CircleBody({ cx: 1.2, cy: 7.6, radius: 0.34 }, { dynamic: true, disableRotation: true }),
+    behaviors: heroBehaviors({ hitPoints: 1, mustSurvive: true }),
+  });
+  const held = { l: false, r: false, u: false, d: false };
+  const bind = (keys: KeyCodes[], k: keyof typeof held) => {
+    stage.keyboard.setKeyDownHandler(keys, () => (held[k] = true));
+    stage.keyboard.setKeyUpHandler(keys, () => (held[k] = false));
+  };
+  bind([KeyCodes.KEY_LEFT, KeyCodes.KEY_A], "l"); bind([KeyCodes.KEY_RIGHT, KeyCodes.KEY_D], "r");
+  bind([KeyCodes.KEY_UP, KeyCodes.KEY_W], "u"); bind([KeyCodes.KEY_DOWN, KeyCodes.KEY_S], "d");
+  stage.world.repeatEvents.push(() => {
+    const dx = (held.r ? 1 : 0) - (held.l ? 1 : 0), dy = (held.d ? 1 : 0) - (held.u ? 1 : 0);
+    const len = Math.hypot(dx, dy) || 1;
+    bunny.rigidBody.setVelocity(dx / len * 4.2, dy / len * 4.2);
+  });
+
+  for (const carrot of level.carrots) {
+    new Actor({
+      appearance: [new FilledPolygon({ vertices: [{ x: -0.16, y: -0.3 }, { x: 0.16, y: -0.3 }, { x: 0, y: 0.35 }], fillColor: "#f28c28", lineWidth: 0.03, lineColor: "#b35a00", z: 1 }), new FilledPolygon({ vertices: [{ x: -0.12, y: 0 }, { x: 0, y: -0.3 }, { x: 0.12, y: 0 }], fillColor: "#4cbf6a", offset: { dx: 0, dy: -0.4 }, z: 1 })],
+      rigidBody: new CircleBody({ cx: carrot.x, cy: carrot.y, radius: 0.25 }),
+      behaviors: new CollectableBehavior({ onCollect: "carrots" }),
+    });
+  }
+
+  for (const route of level.foxes) {
+    const [start] = route;
+    new Actor({
+      appearance: [
+        new FilledCircle({ radius: 0.42, fillColor: "#d8601c", lineWidth: 0.05, lineColor: "#7a3208", z: 1 }),
+        new FilledPolygon({ vertices: [{ x: -0.1, y: 0.1 }, { x: 0, y: -0.3 }, { x: 0.1, y: 0.1 }], fillColor: "#d8601c", lineWidth: 0.03, lineColor: "#7a3208", offset: { dx: -0.25, dy: -0.4 }, z: 1 }),
+        new FilledPolygon({ vertices: [{ x: -0.1, y: 0.1 }, { x: 0, y: -0.3 }, { x: 0.1, y: 0.1 }], fillColor: "#d8601c", lineWidth: 0.03, lineColor: "#7a3208", offset: { dx: 0.25, dy: -0.4 }, z: 1 }),
+        new FilledCircle({ radius: 0.07, fillColor: "#ffffff", offset: { dx: -0.14, dy: -0.06 }, z: 2 }),
+        new FilledCircle({ radius: 0.07, fillColor: "#ffffff", offset: { dx: 0.14, dy: -0.06 }, z: 2 }),
+      ],
+      rigidBody: new CircleBody({ cx: start[0], cy: start[1], radius: 0.42 }, { disableRotation: true }),
+      movement: new PathMovement({ path: new Path().to(route[0][0], route[0][1]).to(route[1][0], route[1][1]).to(route[0][0], route[0][1]), velocity: 2.2 + 0.3 * levelNum, loop: true }),
+      behaviors: new HazardBehavior({ damage: 1 }),
+    });
+  }
+
+  new Actor({
+    appearance: [new FilledCircle({ radius: 0.7, fillColor: "#6b4a2b", lineWidth: 0.06, lineColor: "#3d2a18" }), new FilledCircle({ radius: 0.45, fillColor: "#1a120a", offset: { dx: 0, dy: 0.1 } })],
+    rigidBody: new CircleBody({ cx: 14.6, cy: 1.4, radius: 0.5 }, { collisionsEnabled: false }),
+    behaviors: new GoalBehavior({
+      // The burrow only opens for a bunny who has every carrot
+      onArrival: () => {
+        if (stage.score.counters.get("carrots") < level.carrots.length) return false;
+        stage.score.counters.add("home", 1);
+        return true;
+      },
+    }),
+  });
+  stage.score.addWinCondition(() => stage.score.counters.get("home") >= 1);
+
+  new Actor({
+    appearance: new TextSprite({ center: false, face: "Roboto Black", size: 24, color: "#2e5a1c" }, () => `${level.name}   Carrots ${stage.score.counters.get("carrots")}/${level.carrots.length}`),
+    rigidBody: new BoxBody({ cx: 0.3, cy: 0.4, width: 0.1, height: 0.1 }, { scene: stage.hud }),
+  });
+
+  stage.score.loseSceneBuilder = (overlay: Scene) => endScreen(overlay, { title: "The fox got you!", prompt: "Click or press Enter to try again", next: () => show("play", levelNum), background: "#3a1a0aee", titleColor: "#ffb36b" });
+  stage.score.winSceneBuilder = (overlay: Scene) => endScreen(overlay, { title: "Home safe!", prompt: "Click or press Enter to carry on", next: () => (levelNum == LEVELS.length - 1 ? show("play", 0) : show("play", levelNum + 1)), background: "#1d3a0aee", titleColor: "#bfe3a0" });
+}
+
+// call the function that starts running the game in the `game-player` div
+// tag of `index.html`
+initializeAndLaunch("game-player", new Config(), builder);

@@ -2,12 +2,13 @@
 authors = ["Michael Spear"]
 language = "en"
 multilingual = false
-src = "mdsrc"
 title = "The JetLag Book"
+
 [output.html]
 additional-css = ["./assets-web/mdbook-admonish.css", "./assets-web/jetlag.css"]
 additional-js = ["./assets-web/mermaid.min.js", "./assets-web/mermaid-init.js", "./assets-web/kofi.js", "./assets-web/arcade-frame.js", "./assets-web/terminal-code.js", "./assets-web/terminal-video.js"]
 print.enable = false
+no-section-label = true
 
 [preprocessor.katex]
 after = ["links"]
@@ -18,6 +19,3 @@ command = "mdbook-mermaid"
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.0.2"
-
-[preprocessor.chapter-zero]
-levels = [0]

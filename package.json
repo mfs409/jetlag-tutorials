@@ -1,10 +1,11 @@
 {
-    "name": "jetlag",
+    "name": "jetlag-tutorials",
     "version": "1.0.0",
-    "description": "A 2D Game Framework for web and mobile, using PIXI.js and Box2D",
+    "description": "The JetLag Book: tutorials for the JetLag 2D game framework",
     "scripts": {
         "build": "node scripts/main.mjs build",
-        "check": "tsc --noEmit",
+        "check": "tsc --noEmit && node scripts/main.mjs check-common",
+        "sync-common": "node scripts/main.mjs sync-common",
         "clean": "node scripts/main.mjs clean",
         "help": "node scripts/main.mjs help"
     },
@@ -12,16 +13,9 @@
     "license": "MIT",
     "type": "module",
     "dependencies": {
-        "@box2d/core": "^0.11.0",
-        "hammerjs": "^2.0.8",
-        "howler": "^2.2.4",
-        "pixi-filters": "^6.1.5",
-        "pixi.js": "^8.19.0",
-        "socket.io-client": "^4.8.3"
+        "jetlag2d": "2.0.0"
     },
     "devDependencies": {
-        "@types/hammerjs": "^2.0.46",
-        "@types/howler": "^2.2.13",
         "esbuild": "^0.28.1",
         "http-server": "^14.1.1",
         "typescript": "^7.0.2"

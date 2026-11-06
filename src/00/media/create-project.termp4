@@ -1,0 +1,33 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#font /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+#font-bold /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+#font-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf
+#font-bold-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf
+
+#cols 104
+#rows 12
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop/my-jetlag-tutorials $ 
+D 80
+C npm run create my_game
+D 80
+N
+L
+L > my-jetlag-tutorials@0.0.0 create
+L > jetlag2d create my_game
+L
+R \e[1G\e[0K
+R \e[32m  ✓ Created src/my_game/my_game.ts, src/my_game/my_game.html, and src/my_game/assets/\e[39m\r\n
+L
+L Next steps:
+L   - Edit src/my_game/my_game.ts
+L   - Run \e[32mnpm run serve my_game\e[39m to see it
+D 50
+R \e[1G\e[0K⠙
+R \e[1G
+R \e[0K
+R \e[?2004h
+P ~/Desktop/my-jetlag-tutorials $ 

@@ -1,0 +1,27 @@
+## recorded with termp4 rec. Review for secrets before sharing.
+#font /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+#font-bold /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+#font-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf
+#font-bold-italic /usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf
+
+#cols 104
+#rows 7
+#char-speed 40ms
+#line-speed 10ms
+#raw-speed 10ms
+
+P ~/Desktop $ 
+D 80
+C npx jetlag2d init my-jetlag-tutorials
+D 80
+N
+R \e[?2004l
+D 130
+R \r\e[1G\e[0K
+R \e[32m  ✓ Created the workspace in 'my-jetlag-tutorials'\e[39m\r\n
+L
+L Next steps:
+L   - Run \e[32mcd my-jetlag-tutorials && npm install\e[39m
+L   - Run \e[32mnpm run create my_game\e[39m to make your first game, and read README.md
+D 50
+P ~/Desktop $ 

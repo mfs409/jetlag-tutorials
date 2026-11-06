@@ -18,17 +18,15 @@
 // to build.  If the script doesn't run, the reader sees the path, which is a
 // readable fallback.
 //
-// The recording plays once, when it first scrolls into view, and then rests on
-// its last frame, which is the finished terminal.  It never loops.  The
+// The recording never plays by itself.  It rests on its first frame until the
+// reader presses Play, and then rests on its last frame, which is the finished
+// terminal.  It never loops.  The
 // controls are:
 //
 //   - Rewind: go back to the start, and stop there
 //   - Play / Pause: play from where it is (from the start, if it has finished)
 //   - Replay: start over, and play
 //   - A slider, to go anywhere in the recording
-//
-// People who have asked their system to reduce motion don't get the
-// automatic play.  They see the finished terminal, and can press Play.
 
 (() => {
   /** Little icons, so that the buttons look the same on every system */
@@ -170,7 +168,6 @@
       // Don't blow a small recording up until it's blurry
       figure.style.maxWidth = `${video.videoWidth}px`;
       showPosition();
-      if (reduceMotion) video.currentTime = video.duration;
     });
     video.addEventListener("error", () => {
       figure.classList.add("tv-failed");
@@ -181,18 +178,6 @@
       link.textContent = "Open it in its own tab";
       caption.append(link, ".");
     });
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Play once, the first time that most of it is on screen
-    if (!reduceMotion && "IntersectionObserver" in window) {
-      const watcher = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          watcher.disconnect();
-          if (!interacted) play();
-        }
-      }, { threshold: 0.6 });
-      watcher.observe(figure);
-    }
 
     block.closest("pre").replaceWith(figure);
     showState();
